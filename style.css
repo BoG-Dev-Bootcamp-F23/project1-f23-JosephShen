@@ -1,8 +1,18 @@
-/* body {
+body {
     margin: 0;
+} 
+
+.title {
+    text-align: center;
 }
 
-.nav-bar {
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/* .nav-bar {
     background-color: #fbf7f4;
     margin: 0;
 }
@@ -41,4 +51,4 @@ ul.nav-bar {
 footer {
     position: fixed;
     bottom: 0;
-} */
+} */ */
