@@ -36,15 +36,13 @@
 
 let id = 1;
 let content_type = "Info";
-const img = document.getElementById("img");
-console.log(img);
-const name = document.getElementById("name");
-const type_container = document.getElementById("type-container");
-const left = document.getElementById("left-button");
-const right = document.getElementById("right-button");
-const info_button = document.getElementById("info-button");
-const moves_button = document.getElementById("moves-button");
-const content_box = document.getElementById("content-box");
+// const img = document.getElementById("img");
+// console.log(img);
+// const name = document.getElementById("name");
+// const type_container = document.getElementById("type-container");
+// const info_button = document.getElementById("info-button");
+// const moves_button = document.getElementById("moves-button");
+// const content_box = document.getElementById("content-box");
 
 async function getPokemon() {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -70,11 +68,26 @@ function update(data) {
   stats.forEach((stat) => {
       content_box.innerHTML += (stat.stat.name + ": "+ stat.base_stat.toString() + "<br>" );
   });
-
 }
 
 
 getPokemon();
+
+
+const left = document.getElementById("left-button");
+console.log(left);
+left.addEventListener("click", (event) => {
+  id -= 1;
+  if (id <= 0) id += 1017;
+  getPokemon();
+});
+
+const right = document.getElementById("right-button");
+right.addEventListener("click", (event) => {
+  id += 1;
+  if (id >= 1018) id -= 1017;
+  getPokemon();
+})
 
 // document.addEventListener("DOMContentLoaded", () => {
 
