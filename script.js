@@ -46,25 +46,37 @@ const content_title = document.getElementById("content-type");
 const content_box = document.getElementById("content-box");
 const info_button = document.getElementById("info-button");
 const moves_button = document.getElementById("moves-button");
+let data;
 
 async function getPokemon() {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-  const data = await response.json();
+  data = await response.json();
   console.log(data);
-  update(data);
+  update();
 }
 
 
-function update(data) {
+function update() {
   img.src = data.sprites.front_default;
   img.alt = data.name;
   name.textContent = data.name;
   content_title.textContent = content_type;
+  if (content_type === "Info") get_info();
+  else get_moves();
+}
+
+function get_info() {
   content_box.innerHTML = "height: " + (data.height).toString() + "m <br>";
   content_box.innerHTML += "weight: " + (data.weight).toString() + "kg <br>";
-  const stats = data.stats;
-  stats.forEach((stat) => {
+  data.stats.forEach((stat) => {
       content_box.innerHTML += (stat.stat.name + ": "+ stat.base_stat.toString() + "<br>" );
+  });
+}
+
+function get_moves() {
+  content_box.innerHTML = "";
+  data.moves.forEach((moves) => {
+    content_box.innerHTML += (moves.move.name + "<br>");
   });
 }
 
@@ -73,6 +85,7 @@ getPokemon();
 
 
 // console.log(left);
+
 left.addEventListener("click", (event) => {
   id -= 1;
   if (id <= 0) id += 1010;
@@ -84,6 +97,20 @@ right.addEventListener("click", (event) => {
   id += 1;
   if (id >= 1011) id -= 1010;
   getPokemon();
+})
+
+info_button.addEventListener("click", (event) => {
+  if (content_type == "Moves") {
+    content_type = "Info";
+    get_info();
+  }
+})
+
+moves_button.addEventListener("click", (event) => {
+  if (content_type == "Info") {
+    content_type = "Moves";
+    get_moves();
+  }
 })
 
 // document.addEventListener("DOMContentLoaded", () => {
