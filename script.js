@@ -33,12 +33,32 @@
 //     });
 // });
 
+let color = {
+  normal: "#A8A77A",
+  fire:"#EE8130",
+  water: "#6390F0",
+  electric: "#F7D02C",
+  grass: "#7AC74C",
+  ice: "#96D9D6",
+  fighting: '#C22E28',
+  poison: '#A33EA1',
+  ground: '#E2BF65',
+  flying: '#A98FF3',
+  psychic: '#F95587',
+  bug: '#A6B91A',
+  rock: '#B6A136',
+  ghost: '#735797',
+  dragon: '#6F35FC',
+  dark: '#705746',
+  steel: '#B7B7CE',
+  fairy: '#D685AD'
+};
 
 let id = 1;
 let content_type = "Info";
 const img = document.getElementById("img");
 const name = document.getElementById("name");
-const type_container = document.getElementById("type-container");
+const type_container = document.getElementById("inner-type-container");
 const left = document.getElementById("left-button");
 const right = document.getElementById("right-button");
 
@@ -60,17 +80,30 @@ function update() {
   img.src = data.sprites.front_default;
   img.alt = data.name;
   name.textContent = data.name;
-  content_title.textContent = content_type;
+  get_types();
   if (content_type === "Info") get_info();
   else get_moves();
 }
 
+function get_types() {
+  type_container.innerHTML = "";
+  data.types.forEach((type) => {
+    let t = document.createElement("div");
+    t.classList.add('type');
+    t.textContent = type.type.name;
+    t.style.backgroundColor = color[type.type.name];
+    type_container.appendChild(t);
+  });
+}
+
 function get_info() {
-  content_box.innerHTML = "height: " + (data.height).toString() + "m <br>";
+  content_box.innerHTML = "";
+  content_box.innerHTML += "height: " + (data.height).toString() + "m <br>";
   content_box.innerHTML += "weight: " + (data.weight).toString() + "kg <br>";
   data.stats.forEach((stat) => {
       content_box.innerHTML += (stat.stat.name + ": "+ stat.base_stat.toString() + "<br>" );
   });
+  content_title.textContent = content_type;
 }
 
 function get_moves() {
@@ -78,6 +111,7 @@ function get_moves() {
   data.moves.forEach((moves) => {
     content_box.innerHTML += (moves.move.name + "<br>");
   });
+  content_title.textContent = content_type;
 }
 
 
