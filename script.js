@@ -104,6 +104,8 @@ function get_info() {
       content_box.innerHTML += (stat.stat.name + ": "+ stat.base_stat.toString() + "<br>" );
   });
   content_title.textContent = content_type;
+  info_button.style.backgroundColor = "#7AC74C";
+  moves_button.style.backgroundColor = "#E8E8E8";
 }
 
 function get_moves() {
@@ -112,6 +114,8 @@ function get_moves() {
     content_box.innerHTML += (moves.move.name + "<br>");
   });
   content_title.textContent = content_type;
+  moves_button.style.backgroundColor = "#7AC74C";
+  info_button.style.backgroundColor = "#E8E8E8";
 }
 
 

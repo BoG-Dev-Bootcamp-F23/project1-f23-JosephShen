@@ -28,6 +28,7 @@ body {
 
 .name {
     border-radius: 10px;
+    width: 260px;
     padding: 0 20px 0 20px;
     border: 1px solid #000;
     background: #E8E8E8;
@@ -35,28 +36,38 @@ body {
 }
 
 .type-container {
-    margin-left: 30px;
+    margin: 20px 0 20px 30px;
     width: 420px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .type-container p {
-    margin-top: 0px;
-    font-size: 21px;
-    margin-bottom: 15px;
+    margin-top: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .type {
-    background-color: gold;
     border-radius: 8px;
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     width: fit-content;
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
     margin-bottom: 10px;
     margin-right: 5px;
+}
+
+.arrow-button button {
+    margin: 10px 20px 10px 20px;
+    padding: 5px 25px 5px 25px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    width: fit-content;
 }
 
 #inner-type-container {
@@ -69,18 +80,40 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 25px;
+}
+
+#content-type {
+    font-weight: bold;
 }
 
 #content-box {
     background: #E8E8E8;
-    padding: 30px 80px 50px 80px;
+    padding: 30px 80px 50px 20px;
 }
 
 
 .info-moves-button {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+}
+
+.info-moves-button button {
+    padding: 5px 20px 5px 20px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    width: fit-content;
+}
+
+#info-button {
+    margin: 10px 20px 10px 20px;
+}
+
+#moves-button {
+    margin: 10px 20px 10px 20px;
 }
 
 /* .nav-bar {
